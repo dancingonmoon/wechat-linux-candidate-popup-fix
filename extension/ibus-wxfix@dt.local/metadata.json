@@ -1,0 +1,7 @@
+{
+    "uuid": "ibus-wxfix@dt.local",
+    "name": "IBus WeChat candidate popup fix",
+    "description": "Normalizes device-pixel-scaled relative cursor coordinates sent by WeChat's Qt/IBus plugin (SetCursorLocationRelative) and re-anchors on window changes, so the IBus candidate popup stays near the text cursor under fractional scaling (125%). Only touches the wayland/relative channel; GTK/absolute clients (e.g. gnome-terminal) are unaffected. Remove when upstream fixes the Qt plugin.",
+    "shell-version": ["46"],
+    "version": 2
+}
