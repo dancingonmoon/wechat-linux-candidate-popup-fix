@@ -57,7 +57,9 @@ export default class IbusWxfixExtension extends Extension {
     }
 
     _detach() {
-        if (this._ps && this._relId) {
+        // 注销时 PanelService 可能已由 C 侧销毁, 此时 disconnect 会触发
+        // "Object ... has been already disposed" 异常, 并拖住 IBus 服务停机。
+        if (this._ps && this._relId && !this._ps.is_destroyed?.()) {
             try { this._ps.disconnect(this._relId); } catch (e) {}
         }
         this._ps = null;
